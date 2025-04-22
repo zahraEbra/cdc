@@ -1,0 +1,9 @@
+[servers]
+
+
+[servers.production]
+url = 'http://ksqldb:8088'
+topic_link = 'http://kafka:29092/topics/{}'
+[history]
+enabled = true
+size = 50
