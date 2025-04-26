@@ -108,7 +108,7 @@ services:
     environment:
       APP_CONFIG: /config.toml
     volumes:
-      - ./development.toml:/config.toml
+      - ./ksqdb_ui_config.toml:/config.toml
 
 volumes:
   postgres_data:
