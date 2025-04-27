@@ -24,3 +24,35 @@ docker-compose up -d
 
 ## Step 3: Configure Debezium connector
 - [Run Postman Register API](Debezium.postman_collection.json) 
+
+## Step 4: Configure ClickHouse
+Per each table on PostgreSQL there is need to do these tree steps on ClickHouse side:
+- Create Kafka engine Table:
+  
+CREATE TABLE mydb.table_queue
+(
+    id UInt64,
+    values Nullable(String),
+    created_at Nullable(String),
+    created_by_id Nullable(String),
+    is_deleted Bool,
+    is_archived Bool
+)
+ENGINE = Kafka
+SETTINGS kafka_broker_list = 'kafka:9092',
+ kafka_topic_list = 'etl_table',
+ kafka_group_name = 'clickhouse-queue',
+ kafka_format = 'JSONEachRow',
+ kafka_num_consumers = 1,
+ kafka_handle_error_mode = 'stream';
+  
+
+- Create a Materialized View:
+  ```
+
+  ```
+
+- Create a destination Table:
+  ```
+  
+  ```
