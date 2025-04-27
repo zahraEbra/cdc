@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "8e3e65fe-1a81-424e-876c-39d320cda01d",
+		"name": "Debezium",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4514549"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"postgres-connector\",\r\n    \"config\": {\r\n      \"connector.class\": \"io.debezium.connector.postgresql.PostgresConnector\",\r\n      \"database.hostname\": \"postgres\",\r\n      \"database.port\": \"5432\",\r\n      \"database.user\": \"dbuser\",\r\n      \"database.password\": \"dbpass\",\r\n      \"database.dbname\": \"mydb\",\r\n      \"database.server.name\": \"postgres\",\r\n      \"plugin.name\": \"pgoutput\",\r\n      \"slot.name\": \"debezium_slot\",\r\n      \"publication.name\": \"debezium_publication\",\r\n      \"database.history.kafka.bootstrap.servers\": \"kafka:9092\",\r\n      \"database.history.kafka.topic\": \"schema-changes.postgres\",\r\n      \"include.schema.changes\": \"true\",\r\n      \"key.converter\": \"org.apache.kafka.connect.json.JsonConverter\", \r\n      \"value.converter\": \"org.apache.kafka.connect.json.JsonConverter\",\r\n      \"producer.compression.type\": \"gzip\",\r\n      \"snapshot.mode\": \"initial\",\r\n      \"max.request.size\": \"209715200\",\r\n      \"message.max.bytes\": \"209715200\",\r\n      \"replica.fetch.max.bytes\": \"209715200\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8083/connectors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8083",
+					"path": [
+						"connectors",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
