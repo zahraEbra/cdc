@@ -23,3 +23,4 @@ docker-compose up -d
 ```
 
 ## Step 3: Configure Debezium connector
+- Run Postman Register API 
